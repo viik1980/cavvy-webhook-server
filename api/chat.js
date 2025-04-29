@@ -1,13 +1,9 @@
 export default async function handler(req, res) {
   if (req.method === 'POST') {
-    const { message } = req.body;
-
-    // Здесь можно отправить сообщение в Cavvy.ai (если есть токен или API)
-    // А пока просто отвечаем тестовым сообщением:
-    return res.status(200).json({
-      message: `Вы сказали: "${message}". Бот скоро будет подключен!`,
-    });
+    const body = req.body;
+    console.log("Получено сообщение от Cavvy:", body);
+    res.status(200).json({ message: "Получено!" });
   } else {
-    res.status(405).json({ error: 'Метод не разрешён' });
+    res.status(405).json({ message: "Метод не разрешён" });
   }
 }
